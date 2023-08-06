@@ -9,6 +9,7 @@ import {
   Res,
   HttpCode,
   BadRequestException,
+  Header,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -30,6 +31,7 @@ export class UsersController {
     return res.status(200).send(users);
   }
 
+  @Header('Custom', 'Test Header')
   @Get(':id')
   findOne(@Param('id') id: string) {
     if (+id < 1) {
