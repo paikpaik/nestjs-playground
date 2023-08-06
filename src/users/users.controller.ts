@@ -10,6 +10,7 @@ import {
   HttpCode,
   BadRequestException,
   Header,
+  Redirect,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -31,6 +32,7 @@ export class UsersController {
     return res.status(200).send(users);
   }
 
+  @Redirect('https://nestjs.com', 301)
   @Header('Custom', 'Test Header')
   @Get(':id')
   findOne(@Param('id') id: string) {
